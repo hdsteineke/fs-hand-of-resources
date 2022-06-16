@@ -15,7 +15,7 @@ INSERT INTO dogs (
   name,
   age,
   color,
-  does-tricks
+  does_tricks
 )
 
 VALUES
