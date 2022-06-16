@@ -29,8 +29,18 @@ describe('backend-express-template routes', () => {
       does_tricks: true
     };
     expect(res.body).toEqual(expected);
-   
   });
+
+
+  it('POST /dogs should create a new dog', async () => {
+    const res = await request(app).post('/dogs').send({ name: 'Judas', age: 2, color: 'black', does_tricks: true });
+    console.log('res', res);
+    
+    expect(res.body.name).toBe('Judas');
+  });
+
+
+
   afterAll(() => {
     pool.end();
   });
