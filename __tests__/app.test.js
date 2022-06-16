@@ -11,14 +11,10 @@ describe('backend-express-template routes', () => {
   it('should return a dog object', async () => {
     const res = await request(app).get('/dogs');
     console.log('res.body', res.body);
-    const expected = {
-      id: 1,
-      name: 'Spot',
-      age: 4,
-      color: 'spotted',
-      does_tricks: true
-    };
+    const spot = res.body.find((dog) => dog.id === '1');
     expect(res.body.length).toEqual(5);
+    expect(spot).toHaveProperty('name', 'Spot');
+    expect(spot).toHaveProperty('does_tricks', true);
   });
   afterAll(() => {
     pool.end();
