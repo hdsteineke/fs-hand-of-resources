@@ -62,7 +62,6 @@ describe('backend-express-template routes', () => {
 
   it('/:id should return a specific snack', async () => {
     const res = await request(app).get('/snacks/3');
-    console.log('res.body twizzler', res.body);
     const twizzler = {
       id: '3',
       type: 'Twizzlers',
@@ -70,6 +69,12 @@ describe('backend-express-template routes', () => {
     };
     expect(res.body).toEqual(twizzler);
   });
+
+  it('POST should create a new snack', async () => {
+    const res = await request(app).post('/snacks').send({ type: 'onigiri', is_chocolate: false });
+    expect(res.body.type).toEqual('onigiri');
+  });
+
 
   afterAll(() => {
     pool.end();
