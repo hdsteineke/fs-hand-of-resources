@@ -8,6 +8,8 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
 
+  /////////// DOGS ///////////////////////
+
   it('should return a list of dogs', async () => {
     const res = await request(app).get('/dogs');
     const spot = res.body.find((dog) => dog.id === '1');
@@ -41,7 +43,7 @@ describe('backend-express-template routes', () => {
     const res = await request(app).put('/dogs/2').send({ name: 'Binders', age: 8, color: 'black', does_tricks: true });
     
     expect(res.status).toEqual(200);
-  })
+  });
 
 
   it('DELETE /dogs/:id should delete dog', async () => {
@@ -51,7 +53,13 @@ describe('backend-express-template routes', () => {
 
   });
 
+  ////////// SNACKS /////////////////
 
+  it('/ should return a list of snacks', async () => {
+    const res = await request(app).get('/snacks');
+    console.log('res snack', res);
+    expect(res.body.length).toEqual(3);
+  })
 
   afterAll(() => {
     pool.end();
