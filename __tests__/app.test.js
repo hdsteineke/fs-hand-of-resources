@@ -75,6 +75,13 @@ describe('backend-express-template routes', () => {
     expect(res.body.type).toEqual('onigiri');
   });
 
+  it('/DELETE/:id should remove an existing snack', async () => {
+    const res = await request(app).delete('/snacks/2');
+    console.log('res', res);
+    expect(res.status).toEqual(200);
+    expect(res.body.id).toEqual('2');
+  });
+
 
   afterAll(() => {
     pool.end();
