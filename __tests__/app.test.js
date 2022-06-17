@@ -57,9 +57,19 @@ describe('backend-express-template routes', () => {
 
   it('/ should return a list of snacks', async () => {
     const res = await request(app).get('/snacks');
-    console.log('res snack', res);
     expect(res.body.length).toEqual(3);
-  })
+  });
+
+  it('/:id should return a specific snack', async () => {
+    const res = await request(app).get('/snacks/3');
+    console.log('res.body twizzler', res.body);
+    const twizzler = {
+      id: '3',
+      type: 'Twizzlers',
+      is_chocolate: false
+    };
+    expect(res.body).toEqual(twizzler);
+  });
 
   afterAll(() => {
     pool.end();
