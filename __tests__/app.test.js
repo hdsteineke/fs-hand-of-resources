@@ -77,9 +77,14 @@ describe('backend-express-template routes', () => {
 
   it('/DELETE/:id should remove an existing snack', async () => {
     const res = await request(app).delete('/snacks/2');
-    console.log('res', res);
     expect(res.status).toEqual(200);
     expect(res.body.id).toEqual('2');
+  });
+
+  it('PUT /snacks/:id should update an existing snack', async () => {
+    const res = await request(app).put('/snacks/2').send({ type: 'Cheesey Chex Mix', is_chocolate: false });
+    expect(res.status).toEqual(200);
+    expect(res.body.type).toBe('Cheesey Chex Mix');
   });
 
 
