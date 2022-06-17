@@ -10,7 +10,6 @@ describe('backend-express-template routes', () => {
 
   it('should return a list of dogs', async () => {
     const res = await request(app).get('/dogs');
-    console.log('res.body', res.body);
     const spot = res.body.find((dog) => dog.id === '1');
     expect(res.body.length).toEqual(5);
     expect(spot).toHaveProperty('name', 'Spot');
@@ -20,7 +19,6 @@ describe('backend-express-template routes', () => {
 
   it('should return a specific dog detail', async () => {
     const res = await request(app).get('/dogs/1');
-    console.log('res', res);
     const expected = {
       id: '1',
       name: 'Spot',
@@ -34,7 +32,6 @@ describe('backend-express-template routes', () => {
 
   it('POST /dogs should create a new dog', async () => {
     const res = await request(app).post('/dogs').send({ name: 'Judas', age: 2, color: 'black', does_tricks: true });
-    console.log('res', res);
     
     expect(res.body.name).toBe('Judas');
   });
@@ -42,9 +39,16 @@ describe('backend-express-template routes', () => {
 
   it('PUT /dogs/:id should update dog', async () => {
     const res = await request(app).put('/dogs/2').send({ name: 'Binders', age: 8, color: 'black', does_tricks: true });
-    console.log('res', res);
     
     expect(res.status).toEqual(200);
+  })
+
+
+  it('DELETE /dogs/:id should delete dog', async () => {
+    const res = await request(app).delete('/dogs/1');
+    expect(res.status).toEqual(200);
+    expect(res.body.id).toEqual('1');
+
   });
 
 
