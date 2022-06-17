@@ -40,6 +40,14 @@ describe('backend-express-template routes', () => {
   });
 
 
+  it('PUT /dogs/:id should update dog', async () => {
+    const res = await request(app).put('/dogs/2').send({ name: 'Binders', age: 8, color: 'black', does_tricks: true });
+    console.log('res', res);
+    
+    expect(res.status).toEqual(200);
+  });
+
+
 
   afterAll(() => {
     pool.end();
