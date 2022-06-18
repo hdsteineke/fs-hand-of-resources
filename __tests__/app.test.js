@@ -99,6 +99,12 @@ describe('backend-express-template routes', () => {
     expect(res.body.hobby).toBe('writing');
   });
 
+  it('POST should create a new hobby', async () => {
+    const res = await request(app).post('/hobbies').send({ hobby: 'plant identification', since: 2011, is_active: true });
+    console.log('res.body plant', res.body);
+    expect(res.body.hobby).toBe('plant identification');
+  });
+
   afterAll(() => {
     pool.end();
   });
