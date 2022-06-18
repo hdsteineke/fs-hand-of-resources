@@ -75,7 +75,7 @@ describe('backend-express-template routes', () => {
     expect(res.body.type).toEqual('onigiri');
   });
 
-  it('/DELETE/:id should remove an existing snack', async () => {
+  it('DELETE /snacks/:id should remove an existing snack', async () => {
     const res = await request(app).delete('/snacks/2');
     expect(res.status).toEqual(200);
     expect(res.body.id).toEqual('2');
@@ -109,6 +109,13 @@ describe('backend-express-template routes', () => {
     expect(res.status).toEqual(200);
     expect(res.body.since).toBe(2015);
   });
+
+  it('DELETE /hobbies/:id should delete an existing hobby', async () => {
+    const res = await request(app).delete('/hobbies/1');
+    expect(res.status).toEqual(200);
+    expect(res.body.id).toEqual('1');
+  });
+
 
   afterAll(() => {
     pool.end();
