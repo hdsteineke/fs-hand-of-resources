@@ -87,6 +87,12 @@ describe('backend-express-template routes', () => {
     expect(res.body.type).toBe('Cheesey Chex Mix');
   });
 
+  ////////// HOBBIES ////////////////////////
+
+  it('/ should return a list of hobbies', async () => {
+    const res = await request(app).get('/hobbies');
+    expect(res.body.length).toEqual(5);
+  });
 
   afterAll(() => {
     pool.end();

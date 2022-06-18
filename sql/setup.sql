@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS dogs CASCADE;
 DROP TABLE IF EXISTS snacks CASCADE;
+DROP TABLE IF EXISTS hobbies CASCADE;
 
 CREATE TABLE dogs (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -42,3 +43,23 @@ VALUES
 ('Butterfinger', true),
 ('Chex Mix', false),
 ('Twizzlers', false);
+
+CREATE TABLE hobbies (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  hobby VARCHAR,
+  since INT,
+  is_active BOOLEAN
+);
+
+INSERT INTO hobbies (
+  hobby,
+  since,
+  is_active
+)
+
+VALUES
+('writing', 2000, false),
+('astrology', 2015, false),
+('tarot', 2016, false),
+('dancing', 2007, true),
+('ukulele', 2021, false);
