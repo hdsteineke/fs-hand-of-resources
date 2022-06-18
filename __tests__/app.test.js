@@ -101,8 +101,13 @@ describe('backend-express-template routes', () => {
 
   it('POST should create a new hobby', async () => {
     const res = await request(app).post('/hobbies').send({ hobby: 'plant identification', since: 2011, is_active: true });
-    console.log('res.body plant', res.body);
     expect(res.body.hobby).toBe('plant identification');
+  });
+
+  it('PUT /hobbies/:id should update an existing hobby', async () => {
+    const res = await request(app).put('/hobbies/3').send({ since: 2015 });
+    expect(res.status).toEqual(200);
+    expect(res.body.since).toBe(2015);
   });
 
   afterAll(() => {
