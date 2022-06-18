@@ -94,6 +94,11 @@ describe('backend-express-template routes', () => {
     expect(res.body.length).toEqual(5);
   });
 
+  it('/:id should return a specific hobby', async () => {
+    const res = await request(app).get('/hobbies/1');
+    expect(res.body.hobby).toBe('writing');
+  });
+
   afterAll(() => {
     pool.end();
   });
