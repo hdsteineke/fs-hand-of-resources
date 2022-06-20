@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS dogs CASCADE;
 DROP TABLE IF EXISTS snacks CASCADE;
 DROP TABLE IF EXISTS hobbies CASCADE;
+DROP TABLE IF EXISTS flowers CASCADE;
 
 CREATE TABLE dogs (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -63,3 +64,25 @@ VALUES
 ('tarot', 2016, false),
 ('dancing', 2007, true),
 ('ukulele', 2021, false);
+
+
+CREATE TABLE flowers (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  common_name VARCHAR,
+  color VARCHAR,
+  num_petals INT
+);
+
+INSERT INTO flowers (
+  common_name,
+  color,
+  num_petals
+)
+
+VALUES 
+('checker bloom', 'pink', 5),
+('spring madia', 'gold, red, brown', 30),
+('fawn lily', 'pale yellow', 6),
+('columbine', 'pink, red, yellow,  purple', 5),
+('cornflower', 'blue, pink, purple, white', 16)
+;

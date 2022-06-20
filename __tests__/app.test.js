@@ -111,11 +111,18 @@ describe('backend-express-template routes', () => {
   });
 
   it('DELETE /hobbies/:id should delete an existing hobby', async () => {
-    const res = await request(app).delete('/hobbies/1');
+    const res = await request(app).delete('/hobbies/2');
     expect(res.status).toEqual(200);
-    expect(res.body.id).toEqual('1');
+    expect(res.body.id).toEqual('2');
+    console.log('res console', res);
   });
 
+  ///////// FLOWERS ///////////
+
+  it('/ should return a list of flowers', async () => {
+    const res = await request(app).get('/flowers');
+    expect(res.body.length).toEqual(5);
+  });
 
   afterAll(() => {
     pool.end();
