@@ -124,6 +124,11 @@ describe('backend-express-template routes', () => {
     expect(res.body.length).toEqual(5);
   });
 
+  it('/flowers/:id should return a specific flower', async () => {
+    const res = await request(app).get('/flowers/5');
+    expect(res.body.common_name).toBe('cornflower');
+  });
+
   afterAll(() => {
     pool.end();
   });
