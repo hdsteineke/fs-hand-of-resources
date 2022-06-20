@@ -135,9 +135,14 @@ describe('backend-express-template routes', () => {
 
   it('PUT should update an existing flower', async () => {
     const res = await request(app).put('/flowers/3').send({ color: 'pale yellow-green' });
-    console.log('res', res);
     expect(res.status).toEqual(200);
     expect(res.body.color).toBe('pale yellow-green');
+  });
+
+  it('DELETE should remove an existing flower', async () => {
+    const res = await request(app).delete('/flowers/1');
+    expect(res.status).toEqual(200);
+    expect(res.body.id).toEqual('1');
   });
 
   afterAll(() => {
