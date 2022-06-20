@@ -114,7 +114,6 @@ describe('backend-express-template routes', () => {
     const res = await request(app).delete('/hobbies/2');
     expect(res.status).toEqual(200);
     expect(res.body.id).toEqual('2');
-    console.log('res console', res);
   });
 
   ///////// FLOWERS ///////////
@@ -132,6 +131,13 @@ describe('backend-express-template routes', () => {
   it('POST should create a new flower', async () => {
     const res = await request(app).post('/flowers').send({ common_name: 'iris', color: 'violet', num_petals: 6 });
     expect(res.body.common_name).toBe('iris');
+  });
+
+  it('PUT should update an existing flower', async () => {
+    const res = await request(app).put('/flowers/3').send({ color: 'pale yellow-green' });
+    console.log('res', res);
+    expect(res.status).toEqual(200);
+    expect(res.body.color).toBe('pale yellow-green');
   });
 
   afterAll(() => {
