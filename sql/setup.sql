@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS dogs CASCADE;
 DROP TABLE IF EXISTS snacks CASCADE;
 DROP TABLE IF EXISTS hobbies CASCADE;
 DROP TABLE IF EXISTS flowers CASCADE;
+DROP TABLE IF EXISTS planets CASCADE;
 
 CREATE TABLE dogs (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -86,3 +87,26 @@ VALUES
 ('columbine', 'pink, red, yellow,  purple', 5),
 ('cornflower', 'blue, pink, purple, white', 16)
 ;
+
+CREATE TABLE planets (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR,
+  radius_miles INT
+);
+
+INSERT INTO planets (
+  name,
+  radius_miles
+)
+
+VALUES
+('Sun', 432690),
+('Mercury', 1516),
+('Venus', 3760),
+('Earth', 3959),
+('Mars', 2106),
+('Jupiter', 43441),
+('Saturn', 36184),
+('Uranus', 15759),
+('Neptune', 15299),
+('Pluto', 738);

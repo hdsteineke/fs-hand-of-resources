@@ -145,6 +145,13 @@ describe('backend-express-template routes', () => {
     expect(res.body.id).toEqual('1');
   });
 
+  ///////// PLANETS //////////////////
+
+  it('/ should return a list of planets', async () => {
+    const res = await request(app).get('/planets');
+    expect(res.body.length).toEqual(10);
+  });
+
   afterAll(() => {
     pool.end();
   });
