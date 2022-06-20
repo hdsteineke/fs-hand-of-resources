@@ -129,6 +129,11 @@ describe('backend-express-template routes', () => {
     expect(res.body.common_name).toBe('cornflower');
   });
 
+  it('POST should create a new flower', async () => {
+    const res = await request(app).post('/flowers').send({ common_name: 'iris', color: 'violet', num_petals: 6 });
+    expect(res.body.common_name).toBe('iris');
+  });
+
   afterAll(() => {
     pool.end();
   });
