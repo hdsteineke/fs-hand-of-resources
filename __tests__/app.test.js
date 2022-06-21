@@ -163,6 +163,12 @@ describe('backend-express-template routes', () => {
     expect(res.body.name).toEqual('New Planet');
   });
 
+  it('PUT should update an existing planet', async () => {
+    const res = await request(app).put('/planets/3').send({ name: 'Venus Yo' });
+    expect(res.status).toEqual(200);
+    expect(res.body.name).toBe('Venus Yo');
+  });
+
   afterAll(() => {
     pool.end();
   });
