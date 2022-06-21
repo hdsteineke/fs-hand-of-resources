@@ -157,6 +157,12 @@ describe('backend-express-template routes', () => {
     expect(res.body.name).toEqual('Mercury');
   });
 
+  it('POST should add a new planet', async () => {
+    const res = await request(app).post('/planets').send({ name: 'New Planet', radius_miles: 1236712 });
+    console.log('res', res);
+    expect(res.body.name).toEqual('New Planet');
+  });
+
   afterAll(() => {
     pool.end();
   });
