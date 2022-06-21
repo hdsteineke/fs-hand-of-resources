@@ -169,6 +169,12 @@ describe('backend-express-template routes', () => {
     expect(res.body.name).toBe('Venus Yo');
   });
 
+  it('delete should delete a specific planet', async () => {
+    const res = await request(app).delete('/planets/3');
+    expect(res.status).toEqual(200);
+    expect(res.body.id).toEqual('3');
+  });
+
   afterAll(() => {
     pool.end();
   });
