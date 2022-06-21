@@ -152,6 +152,11 @@ describe('backend-express-template routes', () => {
     expect(res.body.length).toEqual(10);
   });
 
+  it('/planets/:id should return a specific planet', async () => {
+    const res = await request(app).get('/planets/2');
+    expect(res.body.name).toEqual('Mercury');
+  });
+
   afterAll(() => {
     pool.end();
   });
